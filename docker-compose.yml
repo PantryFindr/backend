@@ -1,6 +1,6 @@
 name: pantryfindr
 services:
-    mellons:
+    pantryfindr:
         container_name: pantryfindr
         ports:
             - 9602:80
