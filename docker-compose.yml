@@ -1,0 +1,12 @@
+name: pantryfindr
+services:
+    mellons:
+        container_name: pantryfindr
+        ports:
+            - 9602:80
+        build: .
+        dns:
+            - "1.0.0.1"
+            - "1.1.1.1"
+        restart: unless-stopped
+        image: pantryfindr
