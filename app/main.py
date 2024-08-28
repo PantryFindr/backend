@@ -31,7 +31,7 @@ def save(pantries):
     file.close()
 
 @app.get("/")
-def get_locations():
+async def get_locations():
     response = get(SITE_URL).text.splitlines()
     
     for line in response:
@@ -64,7 +64,7 @@ def get_locations():
     return pantries
 
 @app.get("/faqs")
-def get_faqs():
+async def get_faqs():
     return [
         {
             "id": 1,
