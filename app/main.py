@@ -2,16 +2,17 @@ from requests import get
 from html import unescape
 from json import dumps, load, dump
 from fastapi import FastAPI
-from os import environ, path
+from os import path, getenv
 from time import sleep
+from dotenv import load_dotenv
 
 pantries = {}
 
+load_dotenv()
 NAME_END = -5
-ENV_PATH = ".env"
-DATABASE_PATH = "./app/pantries.json"
+DATABASE_PATH = "/code/pantries.json"
 SITE_URL = "https://mapping.littlefreepantry.org/"
-GEOCODE_KEY = environ.get("GEOCODE_KEY")
+GEOCODE_KEY = getenv("GEOCODE_KEY")
 
 
 app = FastAPI()
@@ -53,12 +54,10 @@ def get_locations():
                 pantries[id]["name"] = name
                 pantries[id]["latitude"] = latitude
                 pantries[id]["longitude"] = longitude
-                print(f"https://geocode.maps.co/reverse?lat={latitude}&lon={longitude}&api_key={GEOCODE_KEY}")
-                zipcode = get(f"https://geocode.maps.co/reverse?lat={latitude}&lon={longitude}&api_key={GEOCODE_KEY}").text
-                print(zipcode)
-                # pantries[id]["zipcode"] = zipcode
+                zipcode = get(f"https://geocode.maps.co/reverse?lat={latitude}&lon={longitude}&api_key={GEOCODE_KEY}").json()["address"]["postcode"]
+                pantries[id]["zipcode"] = zipcode
                 sleep(1)
-            # print(f"Name: {name}, ID: {id}, Latitude: {latitude}, Longitude: {longitude}")
+            print(f"Name: {name}, ID: {id}, Latitude: {latitude}, Longitude: {longitude}, Zip Code: {zipcode}")
 
     print(dumps(pantries, indent=4))
     save(pantries)

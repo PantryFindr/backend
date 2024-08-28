@@ -10,3 +10,5 @@ services:
             - "1.1.1.1"
         restart: unless-stopped
         image: pantryfindr
+        volumes:
+            - ./app/pantries.json:/code/pantries.json
