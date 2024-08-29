@@ -1,6 +1,6 @@
 from requests import get
 from html import unescape
-from json import dumps, load, dump
+from json import load, dump
 from fastapi import FastAPI
 from os import path, getenv
 from time import sleep
@@ -42,27 +42,25 @@ async def get_locations():
             
             if name_start == -1:
                 continue
-            name_start += 7
             
+            name_start += 7
             name = line[name_start:NAME_END]
             name = unescape(name)
             latitude = float(location[2].replace(",", ""))
             longitude = float(location[4].replace(",", ""))
             id = location[6].replace(",", "")
-            pantries[id] = pantries.get(id, {})
-            if pantries[id] == {}:
-                pantries[id]["name"] = name
-                pantries[id]["latitude"] = latitude
-                pantries[id]["longitude"] = longitude
-                address = get(f"https://geocode.maps.co/reverse?lat={latitude}&lon={longitude}&api_key={GEOCODE_KEY}").json()["address"]
-                # print(address)
-                zipcode = address.get("postcode", "")
-                pantries[id]["zipcode"] = zipcode
+            
+            if pantries.get(id) == None:
+                reverse_geocode = get(f"https://geocode.maps.co/reverse?lat={latitude}&lon={longitude}&api_key={GEOCODE_KEY}").json()
                 sleep(1)
-            zipcode = pantries[id]["zipcode"]
-            # print(f"Name: {name}, ID: {id}, Latitude: {latitude}, Longitude: {longitude}, Zip Code: {zipcode}")
+                zipcode = reverse_geocode["address"].get("postcode", "")
+                pantries[id] = {
+                    "name": name,
+                    "latitude": latitude,
+                    "longitude": longitude,
+                    "zipcode": zipcode
+                }
 
-    # print(dumps(pantries, indent=4))
     save(pantries)
     return pantries
 
