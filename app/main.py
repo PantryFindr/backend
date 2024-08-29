@@ -59,6 +59,7 @@ async def get_locations():
                 zipcode = address.get("postcode", "")
                 pantries[id]["zipcode"] = zipcode
                 sleep(1)
+            zipcode = pantries[id][zipcode]
             print(f"Name: {name}, ID: {id}, Latitude: {latitude}, Longitude: {longitude}, Zip Code: {zipcode}")
 
     print(dumps(pantries, indent=4))
