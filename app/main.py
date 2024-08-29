@@ -55,14 +55,14 @@ async def get_locations():
                 pantries[id]["latitude"] = latitude
                 pantries[id]["longitude"] = longitude
                 address = get(f"https://geocode.maps.co/reverse?lat={latitude}&lon={longitude}&api_key={GEOCODE_KEY}").json()["address"]
-                print(address)
+                # print(address)
                 zipcode = address.get("postcode", "")
                 pantries[id]["zipcode"] = zipcode
                 sleep(1)
             zipcode = pantries[id]["zipcode"]
-            print(f"Name: {name}, ID: {id}, Latitude: {latitude}, Longitude: {longitude}, Zip Code: {zipcode}")
+            # print(f"Name: {name}, ID: {id}, Latitude: {latitude}, Longitude: {longitude}, Zip Code: {zipcode}")
 
-    print(dumps(pantries, indent=4))
+    # print(dumps(pantries, indent=4))
     save(pantries)
     return pantries
 
