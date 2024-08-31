@@ -31,6 +31,7 @@ def save(pantries):
     file.close()
 
 @app.get("/")
+@app.get("/locations")
 async def get_locations():
     response = get(SITE_URL).text.splitlines()
     
