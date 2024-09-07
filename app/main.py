@@ -70,16 +70,21 @@ async def get_faqs():
     return [
         {
             "id": 1,
-            "question": "What is PantryFindr?",
-            "answer": "PantryFindr is an independently developed app that allows a user to navigate a large, publicly accessible database of Little Free Pantries worldwide."
+            "question": "Why was PantryFindr created?",
+            "answer": "PantryFindr is an app created by a high school student to address a need in his community: allowing people to find an anonymous source of food safely."
         },
         {
             "id": 2,
-            "question": "How do I get started?",
-            "answer": 'You can start by clicking the "Start Exploring" button, which will allow you to view a list of pantries sorted by distance.'
+            "question": "What does PantryFindr do?",
+            "answer": "PantryFindr allows users to navigate a large, publicly accessible database of Little Free Pantries worldwide. These include pantries listed on the Little Free Pantry website and others that were added manually."
         },
         {
             "id": 3,
+            "question": "How do I get started?",
+            "answer": 'You can start by clicking the "Continue" button, which will allow you to view a list of pantries sorted by distance. From there, simply click on a location to view it on the map, and click on the pin or the "Open in Maps" text to open it in Apple Maps and start navigation.'
+        },
+        {
+            "id": 4,
             "question": "How do I use the search functionality?",
             "answer": "Simply tap the search bar and type the name of a pantry you'd like to see or enter a zip code."
         }
