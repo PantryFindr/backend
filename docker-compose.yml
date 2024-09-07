@@ -12,5 +12,3 @@ services:
         image: pantryfindr
         volumes:
             - ./app/pantries.json:/code/pantries.json
-        env_file:
-            - .env
