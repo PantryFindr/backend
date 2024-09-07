@@ -71,7 +71,7 @@ async def get_faqs():
         {
             "id": 1,
             "question": "Why was PantryFindr created?",
-            "answer": "PantryFindr is an app created by a high school student to address a need in his community: allowing people to find an anonymous source of food safely."
+            "answer": "PantryFindr is an app created by a high school student to address a need in his community and others: allowing people to find an anonymous source of food safely."
         },
         {
             "id": 2,
@@ -80,12 +80,12 @@ async def get_faqs():
         },
         {
             "id": 3,
-            "question": "How do I get started?",
-            "answer": 'You can start by clicking the "Continue" button, which will allow you to view a list of pantries sorted by distance. From there, simply click on a location to view it on the map, and click on the pin or the "Open in Maps" text to open it in Apple Maps and start navigation.'
+            "question": "Does PantryFindr collect my data?",
+            "answer": "PantryFindr does not collect any data whatsoever. The optional location is stored and processed only on your device and is only used to sort the list of pantries."
         },
         {
             "id": 4,
-            "question": "How do I use the search functionality?",
-            "answer": "Simply tap the search bar and type the name of a pantry you'd like to see or enter a zip code."
+            "question": "Why does PantryFindr ask for my location?",
+            "answer": "PantryFindr asks for your location to sort the list of pantries by proximity. This is always optional and you can change this setting at any time in the Settings app."
         }
     ]
