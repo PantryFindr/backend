@@ -13,7 +13,7 @@ NAME_END = -5
 DATABASE_PATH = "/code/pantries.json"
 SITE_URL = "https://mapping.littlefreepantry.org/"
 GEOCODE_KEY = getenv("GEOCODE_KEY")
-
+print(GEOCODE_KEY)
 
 app = FastAPI()
 
