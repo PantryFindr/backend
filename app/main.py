@@ -4,11 +4,11 @@ from json import load, dump
 from fastapi import FastAPI
 from os import path, getenv
 from time import sleep
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 pantries = {}
 
-load_dotenv()
+# load_dotenv()
 NAME_END = -5
 DATABASE_PATH = "/code/pantries.json"
 SITE_URL = "https://mapping.littlefreepantry.org/"
