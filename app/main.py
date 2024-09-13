@@ -2,7 +2,7 @@ from requests import get
 from html import unescape
 from json import load, dump
 from fastapi import FastAPI
-from os import path, getenv
+from os import path, getenv, environ
 from time import sleep
 from dotenv import load_dotenv
 
@@ -14,6 +14,7 @@ DATABASE_PATH = "/code/pantries.json"
 SITE_URL = "https://mapping.littlefreepantry.org/"
 GEOCODE_KEY = getenv("GEOCODE_KEY")
 print(GEOCODE_KEY)
+print(environ)
 
 app = FastAPI()
 
