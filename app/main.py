@@ -53,6 +53,7 @@ async def get_locations():
             id = location[6].replace(",", "")
             
             if pantries.get(id) == None:
+                print(GEOCODE_KEY)
                 reverse_geocode = get(f"https://geocode.maps.co/reverse?lat={latitude}&lon={longitude}&api_key={GEOCODE_KEY}").json()
                 sleep(1)
                 zipcode = reverse_geocode["address"].get("postcode", "")
