@@ -27,9 +27,9 @@ def save(pantries):
         dump(pantries, file, indent=4)
     file.close()
 
-@app.get("/", response_class=RedirectResponse)
+@app.get("/")
 async def redirect():
-    return "https://pantryfindr.com"
+    return RedirectResponse("https://pantryfindr.com")
 
 @app.get("/locations")
 async def get_locations():
