@@ -4,11 +4,11 @@ from json import load, dump
 from fastapi import FastAPI
 from os import path, getenv, environ
 from time import sleep
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
 pantries = {}
 
-load_dotenv()
+# load_dotenv()
 NAME_END = -5
 DATABASE_PATH = "/code/pantries.json"
 SITE_URL = "https://mapping.littlefreepantry.org/"
@@ -53,7 +53,7 @@ async def get_locations():
             id = location[6].replace(",", "")
             
             if pantries.get(id) == None:
-                print(GEOCODE_KEY)
+                # print(GEOCODE_KEY)
                 reverse_geocode = get(f"https://geocode.maps.co/reverse?lat={latitude}&lon={longitude}&api_key={GEOCODE_KEY}").json()
                 sleep(1)
                 zipcode = reverse_geocode["address"].get("postcode", "")
