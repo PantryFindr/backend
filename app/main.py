@@ -1,8 +1,9 @@
+from fastapi import FastAPI
+from fastapi.responses import RedirectResponse
 from requests import get
 from html import unescape
 from json import load, dump
-from fastapi import FastAPI
-from os import path, getenv, environ
+from os import path, getenv
 from time import sleep
 
 pantries = {}
@@ -26,7 +27,10 @@ def save(pantries):
         dump(pantries, file, indent=4)
     file.close()
 
-@app.get("/")
+@app.get("/", response_class=RedirectResponse)
+async def redirect():
+    return "https://pantryfindr.com"
+
 @app.get("/locations")
 async def get_locations():
     response = get(SITE_URL).text.splitlines()
